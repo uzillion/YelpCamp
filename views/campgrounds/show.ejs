@@ -1,0 +1,29 @@
+<% include ../partials/header %>
+
+<h1 class="text-center"><%= camp.name %></h1>
+<div class="container" style="padding-left: 80px; padding-right: 150px">
+	<div class="row">
+		<div class=col-md-3>
+			<ul class="list-group">
+				<li class="list-group-item active">Info 1</li>
+				<li class="list-group-item">Info 2</li>
+				<li class="list-group-item">Info 3</li>
+				<li class="list-group-item">Info 4</li>
+			</ul>
+		</div>
+		<div class="col-md-9">
+			<div class="thumbnail">
+				<img src="<%= camp.image %>">
+				<div class="caption"><%= camp.desc %></div>
+			</div>
+			<div class="well">
+				<a href="/camps/<%= camp._id %>/new" class="btn btn-success pull-right">Add Comment</a>
+				<% camp.comments.forEach(function(comment) { %>
+					<p><strong><%= comment.author %></strong><br><%= comment.comment %></p>
+				<% }); %>
+			</div>
+		</div>
+	</div>
+</div>
+
+<% include ../partials/footer %>
