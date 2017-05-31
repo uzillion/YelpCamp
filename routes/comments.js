@@ -1,17 +1,11 @@
 var exp 		= require("express"),
 	router 		= exp.Router({mergeParams: true}),
 	Camp		= require("../models/campgrounds"),
-	Comment		= require("../models/comments");
-
-function isLoggedIn(req, res, next) {
-	if(req.isAuthenticated())
-		return next();
-	res.redirect("/login");
-}
-
+	Comment		= require("../models/comments"),
+	middleware 	= require("../middleware");
 
 //Comments creation route
-router.get("/new", isLoggedIn, function(req, res) {
+router.get("/new", middleware.isLoggedIn, function(req, res) {
 	Camp.findById(req.params.id, function(err, camp) {
 		if(err) {
 			console.log(err);
@@ -23,7 +17,7 @@ router.get("/new", isLoggedIn, function(req, res) {
 
 
 //Comments post route
-router.post("/", isLoggedIn, function(req, res) {
+router.post("/", middleware.isLoggedIn, function(req, res) {
 	Camp.findById(req.params.id, function(err, camp) {
 		if(err) {
 			console.log(err);

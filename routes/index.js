@@ -3,13 +3,6 @@ var exp 		= require("express"),
 	passport	= require("passport"),
 	User		= require("../models/users");
 
-
-function isLoggedIn(req, res, next) {
-	if(req.isAuthenticated())
-		return next();
-	res.redirect("/login");
-}
-
 router.get("/", function(req, res) {
 	res.redirect("/camps");
 });

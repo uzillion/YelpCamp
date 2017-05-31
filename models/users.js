@@ -4,7 +4,7 @@ var mongo 			= require("mongoose"),
 var userSchema = new mongo.Schema({
 	username: String,
 	password: String,
-	// userCamps: [{
+	// camps: [{
 	// 	type: mongo.Schema.Types.ObjectId,
 	// 	ref: "Camp"
 	// }]
